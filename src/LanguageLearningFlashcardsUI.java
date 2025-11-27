@@ -7,12 +7,12 @@ public class LanguageLearningFlashcardsUI {
 
     private static final String RESET = "\u001B[0m";
     private static final String VIOLET = "\u001B[35m";       
-    private static final String BOLD_VIOLET = "\u001B[1;35m"; 
+    private static final String BOLD_VIOLET = "\u001B[1;35m";
     private static final String WHITE = "\u001B[37m";
     private static final String BOLD_WHITE = "\u001B[1;37m";
     private static final String RED = "\u001B[31m";
-    private static final String GREEN = "\u001B[32m";
     
+    // UI Constants
     private static final String PROMPT = BOLD_VIOLET + "➜ " + RESET;
     private static final int TYPING_SPEED = 30; 
 
@@ -30,7 +30,7 @@ public class LanguageLearningFlashcardsUI {
         clearScreen();
         printBanner();
         
-        // Animated intro
+        
         printAnimated(BOLD_WHITE + "Initializing system..." + RESET);
         showLoadingBar();
         
@@ -84,12 +84,15 @@ public class LanguageLearningFlashcardsUI {
     }
 
     private void startSession() {
+        
         Language selectedLanguage = chooseLanguage();
         if (selectedLanguage == null) return;
 
+        
         int levelChoice = chooseLevel();
         if (levelChoice == -1) return;
 
+        
         clearScreen();
         System.out.println(BOLD_VIOLET + "Target: " + WHITE + selectedLanguage.getDisplayName());
         System.out.println(BOLD_VIOLET + "Mode:   " + WHITE + "Level " + levelChoice);
@@ -103,6 +106,7 @@ public class LanguageLearningFlashcardsUI {
         if (handler != null) {
             clearScreen();
             handler.run(scanner);
+            
             System.out.println(VIOLET + "\nPress Enter to return to Main Menu..." + RESET);
             scanner.nextLine();
         } else {
@@ -161,10 +165,8 @@ public class LanguageLearningFlashcardsUI {
         return name.isEmpty() ? "Guest" : name;
     }
 
-
     private void printHeader(String title) {
         System.out.println(BOLD_VIOLET + "╔════════════════════════════════════════╗" + RESET);
-        // Center the title manually for fixed width
         int width = 40;
         int padding = (width - title.length()) / 2;
         String fmt = "║%" + padding + "s%s%" + (width - padding - title.length()) + "s║";
@@ -177,13 +179,10 @@ public class LanguageLearningFlashcardsUI {
     }
 
     private void printBanner() {
-        System.out.println(VIOLET + "    __    _                           ");
-        System.out.println("   / /   (_)___  ____ ___  ______     ");
-        System.out.println("  / /   / / __ \\/ __ `/ / / / __ \\    ");
-        System.out.println(" / /___/ / / / / /_/ / /_/ / /_/ /    ");
-        System.out.println("/_____/_/_/ /_/\\__, /\\__,_/\\____/     ");
-        System.out.println("              /____/                  " + RESET);
-        System.out.println(BOLD_WHITE + "   LANGUAGE LEARNING FLASHCARDS v1.0  " + RESET);
+       
+        System.out.println(VIOLET + "======================================" + RESET);
+        System.out.println(BOLD_VIOLET + "   LANGUAGE LEARNING FLASHCARDS" + RESET);
+        System.out.println(VIOLET + "   Interactive Grammar & Vocabulary" + RESET);
         System.out.println(VIOLET + "======================================" + RESET);
     }
 
@@ -204,7 +203,7 @@ public class LanguageLearningFlashcardsUI {
         for (int i = 0; i < 20; i++) {
             System.out.print("█");
             try {
-                Thread.sleep(40); // speed of loading
+                Thread.sleep(40); 
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
             }
