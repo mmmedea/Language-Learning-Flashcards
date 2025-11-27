@@ -223,32 +223,50 @@ Session Complete! Final Score: 10 / 10
 
 ___________________________________________________________________________________________________________________
 Author and Acknowledgement
+
 Author: Macatangay, Althea Rhien N.
+
 Martinez, Maricris M.
+
 Marasigan, Kayla Jane D.
 
 Course: CS 211 - Object-Oriented Programming
+
 Institution: Batangas State University
+
 Acknowledgements
+
 This project extends sincere thanks to Christiana Grace Alib for her guidance on OOP principles. The CSV data structure used in this work was inspired by best practices in language learning. Additionally, the use of ANSI color formatting contributed to enhancing the overall user experience.
 
 ___________________________________________________________________________________________________________________
 
 Future Enhancements
 Potential improvements for future versions:
+
 •	Progress Tracking: Save user scores and track improvement over time
+
 •	Difficulty Scaling: Adaptive difficulty based on user performance
+
 •	More Languages: Expand beyond the current 5 languages
+
 •	Audio Support: Pronunciation guidance for words and phrases
+
 •	Timed Challenges: Speed-based exercises for advanced learners
+
 •	User Accounts: Multiple user profiles with individual progress
+
 •	Custom Vocabulary: Allow users to add their own words and phrases
+
 •	Spaced Repetition: Implement scientifically-backed review schedules
+
 •	Mobile Version: Port to Android/iOS for on-the-go learning
 
 __________________________________________________________________________________________________________________
 
 References
+
 •	Java Documentation: https://docs.oracle.com/javase/
+
 •	OOP Design Patterns: Gang of Four Design Patterns
+
 •	Language Data Sources: Open-source language learning datasets
