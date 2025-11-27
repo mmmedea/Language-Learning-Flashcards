@@ -1,7 +1,9 @@
 Language Learning Flashcards
+
 Description/Overview
-Language Learning Flashcards is an interactive command-line application designed to make learning new languages engaging and effective. The program helps users build their language skills progressively through three difficulty levels: vocabulary practice, phrase translation, and grammar mastery.
-The application supports five languages (Filipino, Spanish, French, Japanese, and Korean) and provides instant feedback with helpful tips to improve translation accuracy. Users can practice translating individual words, common phrases, and complete sentences with proper grammar, punctuation, and capitalization. The app makes language learning accessible and fun by breaking down complex language acquisition into manageable, interactive exercises.
+      Language Learning Flashcards is an interactive command-line application designed to make learning new languages engaging and effective. The program helps users build their language skills progressively through three difficulty levels: vocabulary practice, phrase translation, and grammar mastery.
+
+   The application supports five languages (Filipino, Spanish, French, Japanese, and Korean) and provides instant feedback with helpful tips to improve translation accuracy. Users can practice translating individual words, common phrases, and complete sentences with proper grammar, punctuation, and capitalization. The app makes language learning accessible and fun by breaking down complex language acquisition into manageable, interactive exercises.
 __________________________________________________________________________________________________________________
 
 OOP Concepts Applied
