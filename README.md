@@ -134,60 +134,93 @@ Identify yourself:
 Welcome, John. System ready.
 
 ╔═══════════════════════════════════════╗
+
 ║             MAIN MENU                 ║
+
 ╠═══════════════════════════════════════╣
+
 User: John
 
  [1] Start New Session
+ 
  [2] Exit
 
 ╚═══════════════════════════════════════╝
+
 ➜ 1
 
 ╔═══════════════════════════════════════╗
+
 ║          SELECT LANGUAGE              ║
+
 ╠═══════════════════════════════════════╣
+
  [1] Filipino
+ 
  [2] Spanish
+
  [3] French
+ 
  [4] Japanese
+ 
  [5] Korean
+ 
  [6] Back
 
 ╚═══════════════════════════════════════╝
+
 ➜ 2
 
 ╔═══════════════════════════════════════╗
+
 ║        SELECT DIFFICULTY              ║
+
 ╠═══════════════════════════════════════╣
+
  [1] Vocabulary (Words)
+ 
  [2] Phrases    (Sentences)
+ 
  [3] Grammar    (Mechanics)
+ 
  [4] Back
 
 ╚═══════════════════════════════════════╝
+
 ➜ 1
 
 Target: Spanish
+
 Mode:   Level 1
 
 Loading modules...
+
 [████████████████████] Done.
 
 === LEVEL 1: Vocabulary Practice ===
+
 Translate the following words into Spanish.
+
 Type 'EXIT' to return to the menu early.
 
 Q1: hello -> hola
+
 ✅ Correct!
+
 Q2: water -> agua
+
 ✅ Correct!
+
 Q3: book -> libro
+
 ✅ Correct!
 
 ------------------------------------------------
+
 Session Complete! Final Score: 10 / 10
+
 ------------------------------------------------
+
 ___________________________________________________________________________________________________________________
 Author and Acknowledgement
 Author: Macatangay, Althea Rhien N.
