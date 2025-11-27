@@ -52,7 +52,7 @@ public class LanguageLearningFlashcardsUI {
                         break;
                     case 2:
                         System.out.println();
-                        printAnimated(PRIMARY + "  TThank you for playing. See you next time!, " + playerName + "." + RESET, 30);
+                        printAnimated(PRIMARY + "Thank you for playing. See you next time!" + playerName + "." + RESET, 30);
                         running = false;
                         break;
                     default:
