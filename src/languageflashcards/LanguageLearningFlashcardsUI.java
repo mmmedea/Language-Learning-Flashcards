@@ -36,7 +36,7 @@ public class LanguageLearningFlashcardsUI {
         
         String playerName = askForName();
         System.out.println();
-        printAnimated(TEXT_BOLD + "  Welcome, " + PRIMARY_BOLD + playerName + TEXT_BOLD + ". Dashboard ready." + RESET, 20);
+        printAnimated(TEXT_BOLD + "  Welcome, " + PRIMARY_BOLD + playerName + TEXT_BOLD + ".to Language Learning Flashcards :>." + RESET, 20);
         pause(800);
 
         boolean running = true;
@@ -52,7 +52,7 @@ public class LanguageLearningFlashcardsUI {
                         break;
                     case 2:
                         System.out.println();
-                        printAnimated(PRIMARY + "  Terminating session... Goodbye, " + playerName + "." + RESET, 30);
+                        printAnimated(PRIMARY + "  TThank you for playing. See you next time!, " + playerName + "." + RESET, 30);
                         running = false;
                         break;
                     default:
@@ -157,7 +157,7 @@ public class LanguageLearningFlashcardsUI {
 
     private String askForName() {
         System.out.println();
-        printAnimated(PRIMARY + "  IDENTIFY USER:" + RESET, 20);
+        printAnimated(PRIMARY + "  Enter your name:" + RESET, 20);
         System.out.print(PROMPT);
         String name = scanner.nextLine().trim();
         return name.isEmpty() ? "Guest" : name;
