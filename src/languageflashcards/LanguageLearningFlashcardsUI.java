@@ -6,15 +6,15 @@ import java.util.InputMismatchException;
 public class LanguageLearningFlashcardsUI {
 
     private static final String RESET = "\u001B[0m";
-    private static final String VIOLET = "\u001B[35m";       
-    private static final String BOLD_VIOLET = "\u001B[1;35m";
-    private static final String WHITE = "\u001B[37m";
-    private static final String BOLD_WHITE = "\u001B[1;37m";
-    private static final String RED = "\u001B[31m";
+    private static final String PRIMARY = "\u001B[35m";       
+    private static final String PRIMARY_BOLD = "\u001B[1;35m";
+    private static final String TEXT = "\u001B[37m";          
+    private static final String TEXT_BOLD = "\u001B[1;37m";   
+    private static final String ERROR = "\u001B[31m";         
+    private static final String SUCCESS = "\u001B[32m";       
     
-    // UI Constants
-    private static final String PROMPT = BOLD_VIOLET + "➜ " + RESET;
-    private static final int TYPING_SPEED = 30; 
+    private static final String PROMPT = PRIMARY_BOLD + " ➤ " + RESET;
+    private static final int TYPE_SPEED = 20; 
 
     private final Scanner scanner;
     private final LanguageManager languageManager;
@@ -30,14 +30,14 @@ public class LanguageLearningFlashcardsUI {
         clearScreen();
         printBanner();
         
-        
-        printAnimated(BOLD_WHITE + "Initializing system..." + RESET);
-        showLoadingBar();
+        printAnimated(TEXT + "  System Initialization...", 30);
+        showProgressBar();
+        System.out.println();
         
         String playerName = askForName();
         System.out.println();
-        printAnimated(BOLD_WHITE + "Welcome, " + BOLD_VIOLET + playerName + BOLD_WHITE + ". System ready." + RESET);
-        pause(1000);
+        printAnimated(TEXT_BOLD + "  Welcome, " + PRIMARY_BOLD + playerName + TEXT_BOLD + ". Dashboard ready." + RESET, 20);
+        pause(800);
 
         boolean running = true;
         while (running) {
@@ -52,15 +52,15 @@ public class LanguageLearningFlashcardsUI {
                         break;
                     case 2:
                         System.out.println();
-                        printAnimated(VIOLET + "Shutting down system... Goodbye, " + playerName + "!" + RESET);
+                        printAnimated(PRIMARY + "  Terminating session... Goodbye, " + playerName + "." + RESET, 30);
                         running = false;
                         break;
                     default:
-                        printError("Invalid option. Try again.");
+                        printError("Invalid selection.");
                         pause(1000);
                 }
             } catch (InputMismatchException e) {
-                printError("Please enter a number.");
+                printError("Please input a number.");
                 scanner.nextLine(); 
                 pause(1000);
             } catch (Exception e) {
@@ -70,36 +70,33 @@ public class LanguageLearningFlashcardsUI {
         }
     }
 
-    // --- MENUS ---
 
     private void showMainMenu(String name) {
-        printHeader("MAIN MENU");
-        System.out.println(VIOLET + "User: " + WHITE + name + RESET);
-        System.out.println();
-        System.out.println(BOLD_VIOLET + " [1] " + WHITE + "Start New Session");
-        System.out.println(BOLD_VIOLET + " [2] " + WHITE + "Exit");
-        System.out.println();
-        printFooter();
+        printBoxTop("MAIN MENU");
+        System.out.printf(PRIMARY + "║" + RESET + "  User: %-34s" + PRIMARY + "║%n" + RESET, TEXT_BOLD + name + RESET);
+        printBoxSeparator();
+        System.out.println(PRIMARY + "║" + RESET + "  [1] " + TEXT + "Start New Session" + getPadding(19) + PRIMARY + "║" + RESET);
+        System.out.println(PRIMARY + "║" + RESET + "  [2] " + TEXT + "Exit Application" + getPadding(20) + PRIMARY + "║" + RESET);
+        printBoxBottom();
         System.out.print(PROMPT);
     }
 
     private void startSession() {
-        
         Language selectedLanguage = chooseLanguage();
         if (selectedLanguage == null) return;
 
-        
         int levelChoice = chooseLevel();
         if (levelChoice == -1) return;
 
-        
         clearScreen();
-        System.out.println(BOLD_VIOLET + "Target: " + WHITE + selectedLanguage.getDisplayName());
-        System.out.println(BOLD_VIOLET + "Mode:   " + WHITE + "Level " + levelChoice);
+        printBoxTop("SESSION CONFIGURATION");
+        System.out.printf(PRIMARY + "║" + RESET + "  Target: %-32s" + PRIMARY + "║%n" + RESET, TEXT_BOLD + selectedLanguage.getDisplayName() + RESET);
+        System.out.printf(PRIMARY + "║" + RESET + "  Level:  %-32s" + PRIMARY + "║%n" + RESET, TEXT_BOLD + String.valueOf(levelChoice) + RESET);
+        printBoxBottom();
         System.out.println();
         
-        printAnimated("Loading modules...");
-        showLoadingBar();
+        printAnimated(TEXT + "  Loading assets...", 20);
+        showProgressBar();
         
         LevelHandler handler = levelFactory.createLevelHandler(levelChoice, selectedLanguage);
         
@@ -107,25 +104,27 @@ public class LanguageLearningFlashcardsUI {
             clearScreen();
             handler.run(scanner);
             
-            System.out.println(VIOLET + "\nPress Enter to return to Main Menu..." + RESET);
+            System.out.println();
+            System.out.println(PRIMARY + "  [PRESS ENTER TO RETURN]" + RESET);
             scanner.nextLine();
         } else {
-            printError("Level load failure.");
+            printError("Module failed to load.");
         }
     }
 
     private Language chooseLanguage() {
         clearScreen();
-        printHeader("SELECT LANGUAGE");
         Language[] languages = languageManager.getAvailableLanguages();
         
+        printBoxTop("SELECT LANGUAGE");
         for (int i = 0; i < languages.length; i++) {
-            System.out.println(BOLD_VIOLET + " [" + (i + 1) + "] " + WHITE + languages[i].getDisplayName());
+            String label = "  [" + (i + 1) + "] " + languages[i].getDisplayName();
+            System.out.printf(PRIMARY + "║" + RESET + "%-40s" + PRIMARY + "║%n" + RESET, TEXT + label);
         }
-        System.out.println(BOLD_VIOLET + " [" + (languages.length + 1) + "] " + WHITE + "Back");
+        printBoxSeparator();
+        System.out.printf(PRIMARY + "║" + RESET + "%-40s" + PRIMARY + "║%n" + RESET, TEXT + "  [" + (languages.length + 1) + "] Back");
+        printBoxBottom();
         
-        System.out.println();
-        printFooter();
         System.out.print(PROMPT);
 
         int input = readInt();
@@ -133,23 +132,22 @@ public class LanguageLearningFlashcardsUI {
             return languages[input - 1];
         } else if (input == languages.length + 1) {
             return null;
-        } else {
-            printError("Invalid selection.");
-            pause(1000);
-            return null;
         }
+        printError("Invalid option.");
+        pause(1000);
+        return null;
     }
 
     private int chooseLevel() {
         clearScreen();
-        printHeader("SELECT DIFFICULTY");
-        System.out.println(BOLD_VIOLET + " [1] " + WHITE + "Vocabulary " + VIOLET + "(Words)");
-        System.out.println(BOLD_VIOLET + " [2] " + WHITE + "Phrases    " + VIOLET + "(Sentences)");
-        System.out.println(BOLD_VIOLET + " [3] " + WHITE + "Grammar    " + VIOLET + "(Mechanics)");
-        System.out.println(BOLD_VIOLET + " [4] " + WHITE + "Back");
+        printBoxTop("SELECT DIFFICULTY");
+        System.out.printf(PRIMARY + "║" + RESET + "%-40s" + PRIMARY + "║%n" + RESET, TEXT + "  [1] Vocabulary " + PRIMARY + "(Words)");
+        System.out.printf(PRIMARY + "║" + RESET + "%-40s" + PRIMARY + "║%n" + RESET, TEXT + "  [2] Phrases    " + PRIMARY + "(Sentences)");
+        System.out.printf(PRIMARY + "║" + RESET + "%-40s" + PRIMARY + "║%n" + RESET, TEXT + "  [3] Grammar    " + PRIMARY + "(Mechanics)");
+        printBoxSeparator();
+        System.out.printf(PRIMARY + "║" + RESET + "%-40s" + PRIMARY + "║%n" + RESET, TEXT + "  [4] Back");
+        printBoxBottom();
         
-        System.out.println();
-        printFooter();
         System.out.print(PROMPT);
 
         int input = readInt();
@@ -159,73 +157,75 @@ public class LanguageLearningFlashcardsUI {
 
     private String askForName() {
         System.out.println();
-        printAnimated(VIOLET + "Identify yourself:" + RESET);
+        printAnimated(PRIMARY + "  IDENTIFY USER:" + RESET, 20);
         System.out.print(PROMPT);
         String name = scanner.nextLine().trim();
         return name.isEmpty() ? "Guest" : name;
     }
 
-    private void printHeader(String title) {
-        System.out.println(BOLD_VIOLET + "╔════════════════════════════════════════╗" + RESET);
+
+    private void printBoxTop(String title) {
+        System.out.println(PRIMARY + "╔════════════════════════════════════════╗" + RESET);
         int width = 40;
-        int padding = (width - title.length()) / 2;
-        String fmt = "║%" + padding + "s%s%" + (width - padding - title.length()) + "s║";
-        System.out.printf(VIOLET + fmt + "%n" + RESET, "", title, "");
-        System.out.println(BOLD_VIOLET + "╠════════════════════════════════════════╣" + RESET);
+        int paddingLeft = (width - title.length()) / 2;
+        int paddingRight = width - paddingLeft - title.length();
+        System.out.printf(PRIMARY + "║" + RESET + "%s" + PRIMARY_BOLD + "%s" + RESET + "%s" + PRIMARY + "║%n" + RESET, 
+            " ".repeat(paddingLeft), title, " ".repeat(paddingRight));
+        printBoxSeparator();
     }
 
-    private void printFooter() {
-        System.out.println(BOLD_VIOLET + "╚════════════════════════════════════════╝" + RESET);
+    private void printBoxSeparator() {
+        System.out.println(PRIMARY + "╠════════════════════════════════════════╣" + RESET);
+    }
+
+    private void printBoxBottom() {
+        System.out.println(PRIMARY + "╚════════════════════════════════════════╝" + RESET);
     }
 
     private void printBanner() {
-       
-        System.out.println(VIOLET + "======================================" + RESET);
-        System.out.println(BOLD_VIOLET + "   LANGUAGE LEARNING FLASHCARDS" + RESET);
-        System.out.println(VIOLET + "   Interactive Grammar & Vocabulary" + RESET);
-        System.out.println(VIOLET + "======================================" + RESET);
+        System.out.println(PRIMARY + "==========================================" + RESET);
+        System.out.println(PRIMARY_BOLD + "      LANGUAGE LEARNING FLASHCARDS" + RESET);
+        System.out.println(TEXT + "      Interactive Grammar & Vocabulary" + RESET);
+        System.out.println(PRIMARY + "==========================================" + RESET);
     }
 
-    private void printAnimated(String text) {
+    private String getPadding(int length) {
+        return " ".repeat(length);
+    }
+
+    // --- ANIMATIONS ---
+
+    private void printAnimated(String text, int speed) {
         for (char c : text.toCharArray()) {
             System.out.print(c);
-            try {
-                Thread.sleep(TYPING_SPEED);
-            } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
-            }
+            try { Thread.sleep(speed); } catch (Exception e) {}
         }
         System.out.println();
     }
 
-    private void showLoadingBar() {
-        System.out.print(VIOLET + "[");
-        for (int i = 0; i < 20; i++) {
-            System.out.print("█");
-            try {
-                Thread.sleep(40); 
-            } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
-            }
+    private void showProgressBar() {
+        System.out.print(PRIMARY + "  [");
+        for (int i = 0; i < 25; i++) {
+            System.out.print("▓");
+            try { Thread.sleep(30); } catch (Exception e) {}
         }
-        System.out.println("] Done." + RESET);
+        System.out.println("] " + SUCCESS + "Done" + RESET);
         pause(300);
     }
 
     private void clearScreen() {
-        for (int i = 0; i < 50; i++) System.out.println();
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
+        // Fallback for IDEs that don't support ANSI clear
+        for(int i=0; i<50; i++) System.out.println(); 
     }
 
     private void pause(int millis) {
-        try {
-            Thread.sleep(millis);
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-        }
+        try { Thread.sleep(millis); } catch (Exception e) {}
     }
 
     private void printError(String msg) {
-        System.out.println(RED + ">> ERROR: " + msg + RESET);
+        System.out.println(ERROR + "  ✖ " + msg + RESET);
     }
 
     private int readInt() {
