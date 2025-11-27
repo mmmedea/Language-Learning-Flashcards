@@ -118,20 +118,23 @@ Important Notes
 •	Ensure the data folder is in the same directory as your compiled classes
 •	The CSV files must be UTF-8 encoded
 •	If you encounter a startup error, verify that both vocab.csv and phrases.csv exist in the data folder
-________________________________________
-Sample Output
-======================================
-   LANGUAGE LEARNING FLASHCARDS
-   Interactive Grammar & Vocabulary
-======================================
+__________________________________________________________________________________________________________________
+==========================================
 
-Initializing system...
-[████████████████████] Done.
+      LANGUAGE LEARNING FLASHCARDS
+      
+      Interactive Grammar & Vocabulary
+      
+==========================================
 
-Identify yourself:
-➜ John
+  System Initialization...
+  
+  [█████████████████████████] Done
 
-Welcome, John. System ready.
+  Enter your name:
+ ➤ John
+
+Welcome, John to Language Learning Flashcards :>.
 
 ╔═══════════════════════════════════════╗
 
@@ -139,15 +142,17 @@ Welcome, John. System ready.
 
 ╠═══════════════════════════════════════╣
 
-User: John
+║  User: John                           ║
 
- [1] Start New Session
- 
- [2] Exit
+╠═══════════════════════════════════════╣
+
+║  [1] Start New Session                ║
+
+║  [2] Exit Application                 ║
 
 ╚═══════════════════════════════════════╝
 
-➜ 1
+ ➤ 1
 
 ╔═══════════════════════════════════════╗
 
@@ -155,21 +160,23 @@ User: John
 
 ╠═══════════════════════════════════════╣
 
- [1] Filipino
- 
- [2] Spanish
+║  [1] Filipino                         ║
 
- [3] French
- 
- [4] Japanese
- 
- [5] Korean
- 
- [6] Back
+║  [2] Spanish                          ║
+
+║  [3] French                           ║
+
+║  [4] Japanese                         ║
+
+║  [5] Korean                           ║
+
+╠═══════════════════════════════════════╣
+
+║  [6] Back                             ║
 
 ╚═══════════════════════════════════════╝
 
-➜ 2
+ ➤ 2
 
 ╔═══════════════════════════════════════╗
 
@@ -177,25 +184,36 @@ User: John
 
 ╠═══════════════════════════════════════╣
 
- [1] Vocabulary (Words)
- 
- [2] Phrases    (Sentences)
- 
- [3] Grammar    (Mechanics)
- 
- [4] Back
+║  [1] Vocabulary (Words)               ║
+
+║  [2] Phrases    (Sentences)           ║
+
+║  [3] Grammar    (Mechanics)           ║
+
+╠═══════════════════════════════════════╣
+
+║  [4] Back                             ║
 
 ╚═══════════════════════════════════════╝
 
-➜ 1
+ ➤ 1
 
-Target: Spanish
+╔═══════════════════════════════════════╗
 
-Mode:   Level 1
+║      SESSION CONFIGURATION            ║
 
-Loading modules...
+╠═══════════════════════════════════════╣
 
-[████████████████████] Done.
+║  Target: Spanish                      ║
+
+║  Level:  1                            ║
+
+╚═══════════════════════════════════════╝
+
+  Loading assets...
+  
+  [█████████████████████████] Done
+  
 
 === LEVEL 1: Vocabulary Practice ===
 
@@ -215,11 +233,90 @@ Q3: book -> libro
 
 ✅ Correct!
 
+Q4: cat -> gato
+
+✅ Correct!
+
+Q5: house -> casa
+
+✅ Correct!
+
+Q6: food -> comida
+
+✅ Correct!
+
+Q7: friend -> amigo
+
+✅ Correct!
+
+Q8: time -> tiempo
+
+✅ Correct!
+
+Q9: day -> dia
+
+❌ Incorrect. The answer was: día
+
+Q10: night -> noche
+
+✅ Correct!
+
 ------------------------------------------------
 
-Session Complete! Final Score: 10 / 10
+Session Complete! Final Score: 9 / 10
 
 ------------------------------------------------
+
+  [PRESS ENTER TO RETURN]
+
+
+___________________________________________________________________________________________________________________
+
+=== LEVEL 2: Phrase Challenge ===
+
+Translate the common phrases into Filipino.
+
+Note: Precision matters!
+
+
+Phrase: "Good morning"
+
+Your translation: Magandang umaga
+
+✅ Perfect!
+
+
+Phrase: "Thank you"
+
+Your translation: EXIT
+
+Exiting level...
+
+Level 2 Complete. Score: 1/5
+
+
+  [PRESS ENTER TO RETURN]
+  
+
+╔═══════════════════════════════════════╗
+
+║             MAIN MENU                 ║
+
+╠═══════════════════════════════════════╣
+
+║  User: John                           ║
+
+╠═══════════════════════════════════════╣
+
+║  [1] Start New Session                ║
+
+║  [2] Exit Application                 ║
+
+╚═══════════════════════════════════════╝
+
+ ➤ 2
+
+Thank you for playing. See you next time! John.
 
 ___________________________________________________________________________________________________________________
 Author and Acknowledgement
