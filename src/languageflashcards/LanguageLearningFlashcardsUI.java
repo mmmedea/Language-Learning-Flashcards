@@ -36,7 +36,7 @@ public class LanguageLearningFlashcardsUI {
         
         String playerName = askForName();
         System.out.println();
-        printAnimated(TEXT_BOLD + "  Welcome, " + PRIMARY_BOLD + playerName + TEXT_BOLD + ".to Language Learning Flashcards :>." + RESET, 20);
+        printAnimated(TEXT_BOLD + "  Welcome, " + PRIMARY_BOLD + playerName + TEXT_BOLD + "to Language Learning Flashcards :>." + RESET, 20);
         pause(800);
 
         boolean running = true;
