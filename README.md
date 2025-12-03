@@ -1,140 +1,196 @@
-Language Learning Flashcards
+Language Learning Flashcards 🌍
 
-Description/Overview
-      Language Learning Flashcards is an interactive command-line application designed to make learning new languages engaging and effective. The program helps users build their language skills progressively through three difficulty levels: vocabulary practice, phrase translation, and grammar mastery.
+IT 2111 - Object-Oriented Programming
 
-   The application supports five languages (Filipino, Spanish, French, Japanese, and Korean) and provides instant feedback with helpful tips to improve translation accuracy. Users can practice translating individual words, common phrases, and complete sentences with proper grammar, punctuation, and capitalization. The app makes language learning accessible and fun by breaking down complex language acquisition into manageable, interactive exercises.
-__________________________________________________________________________________________________________________
+Authors:
 
-OOP Concepts Applied
-This project demonstrates several key Object-Oriented Programming principles:
+- Macatangay, Althea Rhien N.
+  
+- Martinez, Maricris M.
 
-1. Encapsulation
-•	The Language class encapsulates language data (code and display name) with private fields and public getter methods
-•	DefaultLanguageManager hides the internal storage of vocabulary and phrases, exposing only necessary methods through the LanguageManager interface
-•	Data loading logic is contained within DefaultLanguageManager and not exposed to other classes
+- Marasigan, Kayla Jane D.
+
+________________________________________________________________________________________________________
+
+📖 Overview
+
+Language Learning Flashcards is an interactive command-line application designed to make language learning engaging and effective. The program helps users build their language skills progressively through three difficulty levels: vocabulary practice, phrase translation, and grammar mastery.
+
+The application supports **five languages** (Filipino, Spanish, French, Japanese, and Korean) and provides instant feedback with helpful tips to improve translation accuracy. Users can practice translating individual words, common phrases, and complete sentences with proper grammar, punctuation, and capitalization.
+
+________________________________________________________________________________________________________
+
+✨ Features
+
+🎯 What Users Can Do:
+
+- Choose from 5 Languages**: Filipino, Spanish, French, Japanese, and Korean
+  
+- Progressive Learning Levels:
+  
+  - Level 1 (Vocabulary): Translate 10 random words with support for multiple correct answers
+  - Level 2 (Phrases): Practice 5 common phrases with precision checking
+  - Level 3 (Grammar): Master sentence translation with capitalization and punctuation validation
+    
+- Instant Feedback: Receive immediate corrections and see the right answers
+  
+- Flexible Sessions: Exit anytime with 'EXIT' command
+  
+- Personalized Experience: Enter your name for a customized greeting
+  
+- Visual Enhancements: Enjoy animated text, loading bars, and color-coded output
+
+________________________________________________________________________________________________________
+
+💾 Storage & Data Management
+
+The application uses CSV files for storing language data:
+
+- `data/vocab.csv`: Contains vocabulary words across all supported languages
+- `data/phrases.csv`: Contains common phrases and sentences
+
+CSV Structure: Each file has 6 columns (English, Filipino, Spanish, French, Japanese, Korean) with UTF-8 encoding to support special characters and non-Latin scripts.
+
+________________________________________________________________________________________________________
+
+📂 Project Structure
+
+```
+languageflashcards/
+
+│
+
+├── src/
+
+│   └── languageflashcards/
+
+│       ├── Main.java                          # Application entry point
+
+│       ├── Language.java                      # Language data model
+
+│       ├── LanguageManager.java               # Interface for language data
+
+│       ├── DefaultLanguageManager.java        # CSV data loader & manager
+
+│       ├── LevelHandler.java                  # Abstract base for levels
+
+│       ├── LevelOneHandler.java               # Vocabulary practice
+
+│       ├── LevelTwoHandler.java               # Phrase translation
+
+│       ├── LevelThreeHandler.java             # Grammar mastery
+
+│       ├── LevelFactory.java                  # Factory for level creation
+
+│       └── LanguageLearningFlashcardsUI.java  # User interface & menus
+
+│
+
+├── data/
+
+│   ├── vocab.csv                              # Vocabulary database
+
+│   └── phrases.csv                            # Phrases database
+
+│
+
+├── static/
+
+│   └── [Team photos]                          # Formal photos of contributors
+
+│
+
+├── .gitignore                                 # Git ignore rules
+
+└── README.md                                  # This file
+
+```
+
+________________________________________________________________________________________________________
+
+🚀 How to Run the Program
+
+ Prerequisites
+- Java Development Kit (JDK) 8 or higher
+- A terminal or command prompt
+- UTF-8 encoding support in your terminal (for special characters)
+
+Step-by-Step Instructions
+
+1. Navigate to the project directory
+   ```bash
+   cd path/to/languageflashcards
+   ```
+
+2. Compile all Java files
+   ```bash
+   javac languageflashcards/*.java
+   ```
+
+3. Run the program
+   ```bash
+   java languageflashcards.Main
+   ```
+
+⚠️ Important Notes
+- Ensure the `data` folder is in the same directory as your compiled classes
+- The CSV files must be UTF-8 encoded
+- If you encounter a startup error, verify that both `vocab.csv` and `phrases.csv` exist in the `data` folder
+
+________________________________________________________________________________________________________
+
+🎓 OOP Principles Applied
+
+This project demonstrates key Object-Oriented Programming concepts:
+
+ 1. Encapsulation
+- `Language` class encapsulates language data with private fields and public getters
+- `DefaultLanguageManager` hides internal storage, exposing only necessary methods
+- Data loading logic is contained and not exposed to other classes
 
 2. Abstraction
-•	The LanguageManager interface defines a contract for language data access without specifying implementation details
-•	LevelHandler is an abstract class that defines the structure for all level implementations while allowing each level to implement its own run() method
-•	This allows the UI and factory classes to work with abstractions rather than concrete implementations
+- `LanguageManager` interface defines a contract without implementation details
+- `LevelHandler` abstract class provides structure while allowing custom implementations
+- Separates "what" from "how"
 
 3. Inheritance
-•	LevelOneHandler, LevelTwoHandler, and LevelThreeHandler all extend the abstract LevelHandler class
-•	Each handler inherits the languageManager and targetLanguage fields from the parent class
-•	Subclasses override the run() method to provide level-specific behavior
+- `LevelOneHandler`, `LevelTwoHandler`, and `LevelThreeHandler` extend `LevelHandler`
+- Each handler inherits common fields (`languageManager`, `targetLanguage`)
+- Subclasses override `run()` for level-specific behavior
 
 4. Polymorphism
-•	The LevelFactory returns LevelHandler references that can point to any level handler subclass
-•	The UI can call handler.run() without knowing which specific level implementation it's working with
-•	Method overriding allows each level to have different behavior for the same method signature
+- `LevelFactory` returns `LevelHandler` references pointing to specific implementations
+- UI calls `handler.run()` without knowing the concrete type
+- Method overriding enables different behaviors for the same interface
 
-5. Separation of Concerns
-•	Each class has a single, well-defined responsibility
-•	UI logic is separated from game logic and data management
-•	The factory pattern separates object creation from business logic
+5. Design Patterns
+- Factory Pattern: `LevelFactory` centralizes object creation
+- Interface Segregation: `LanguageManager` provides a focused contract
+- Separation of Concerns: Each class has a single, well-defined responsibility
 
-_______________________________________________________________________________________________________________
-Program Structure
-The application follows a modular architecture with clear separation of concerns:
+________________________________________________________________________________________________________
 
-Core Classes and Their Roles
+📸 Example Output
 
-Main.java
-•	Entry point of the application
-•	Initializes the LanguageManager, LevelFactory, and UI
-•	Handles critical startup errors
+```
 
-Language.java
-•	Simple data class representing a language with a code and display name
-•	Provides getter methods for accessing language information
-
-LanguageManager.java (Interface)
-•	Defines the contract for managing language data
-•	Declares methods: getAvailableLanguages(), getWord(), getWordCount()
-
-DefaultLanguageManager.java
-•	Implements LanguageManager interface
-•	Loads vocabulary and phrases from CSV files
-•	Manages data for 5 languages (Filipino, Spanish, French, Japanese, Korean)
-•	Provides methods to retrieve words, phrases, and their translations
-
-LevelHandler.java (Abstract)
-•	Base class for all level implementations
-•	Holds references to LanguageManager and target Language
-•	Declares abstract run() method that each level must implement
-
-LevelOneHandler.java
-•	Implements vocabulary practice (word translation)
-•	Randomly selects 10 words for translation
-•	Accepts multiple correct answers (separated by / in CSV)
-
-LevelTwoHandler.java
-•	Implements phrase translation
-•	Presents 5 random common phrases
-•	Requires more precise translation
-
-LevelThreeHandler.java
-•	Implements grammar mastery level
-•	Checks capitalization, punctuation, and translation accuracy
-•	Provides detailed feedback on grammatical errors
-
-LevelFactory.java
-•	Factory class that creates appropriate LevelHandler instances
-•	Uses the Factory Method design pattern
-•	Returns the correct handler based on level number (1, 2, or 3)
-
-LanguageLearningFlashcardsUI.java
-•	Manages all user interface and interaction
-•	Handles menu navigation, user input, and visual presentation
-•	Features animated text, loading bars, and color-coded output
-•	Controls the main program loop and session flow
-
-_______________________________________________________________________________________________________________
-
-Class Relationships
-Main
- └─→ creates DefaultLanguageManager (implements LanguageManager)
- └─→ creates LevelFactory
- └─→ creates LanguageLearningFlashcardsUI
-      └─→ uses LevelFactory to create LevelHandler instances
-           └─→ LevelOneHandler extends LevelHandler
-           └─→ LevelTwoHandler extends LevelHandler
-           └─→ LevelThreeHandler extends LevelHandler
-_______________________________________________________________________________________________________________
-How to Run the Program
-Prerequisites
-•	Java Development Kit (JDK) 8 or higher
-•	A terminal or command prompt
-•	The project files including the data folder with vocab.csv and phrases.csv
-Step-by-Step Instructions
-1.	Navigate to the project directory
-2.	cd path/to/languageflashcards
-3.	Compile all Java files
-4.	javac languageflashcards/*.java
-5.	Run the program
-6.	java languageflashcards.Main
-Important Notes
-•	Ensure the data folder is in the same directory as your compiled classes
-•	The CSV files must be UTF-8 encoded
-•	If you encounter a startup error, verify that both vocab.csv and phrases.csv exist in the data folder
-__________________________________________________________________________________________________________________
 ==========================================
 
       LANGUAGE LEARNING FLASHCARDS
-      
+
       Interactive Grammar & Vocabulary
-      
+
 ==========================================
 
   System Initialization...
-  
+
   [█████████████████████████] Done
 
   Enter your name:
+
  ➤ John
 
-Welcome, John to Language Learning Flashcards :>.
+  Welcome, John to Language Learning Flashcards :>.
 
 ╔═══════════════════════════════════════╗
 
@@ -178,48 +234,12 @@ Welcome, John to Language Learning Flashcards :>.
 
  ➤ 2
 
-╔═══════════════════════════════════════╗
-
-║        SELECT DIFFICULTY              ║
-
-╠═══════════════════════════════════════╣
-
-║  [1] Vocabulary (Words)               ║
-
-║  [2] Phrases    (Sentences)           ║
-
-║  [3] Grammar    (Mechanics)           ║
-
-╠═══════════════════════════════════════╣
-
-║  [4] Back                             ║
-
-╚═══════════════════════════════════════╝
-
- ➤ 1
-
-╔═══════════════════════════════════════╗
-
-║      SESSION CONFIGURATION            ║
-
-╠═══════════════════════════════════════╣
-
-║  Target: Spanish                      ║
-
-║  Level:  1                            ║
-
-╚═══════════════════════════════════════╝
-
-  Loading assets...
-  
-  [█████████████████████████] Done
-  
-
 === LEVEL 1: Vocabulary Practice ===
 
 Translate the following words into Spanish.
 
 Type 'EXIT' to return to the menu early.
+
 
 Q1: hello -> hola
 
@@ -229,37 +249,9 @@ Q2: water -> agua
 
 ✅ Correct!
 
-Q3: book -> libro
-
-✅ Correct!
-
-Q4: cat -> gato
-
-✅ Correct!
-
-Q5: house -> casa
-
-✅ Correct!
-
-Q6: food -> comida
-
-✅ Correct!
-
-Q7: friend -> amigo
-
-✅ Correct!
-
-Q8: time -> tiempo
-
-✅ Correct!
-
-Q9: day -> dia
+Q3: day -> dia
 
 ❌ Incorrect. The answer was: día
-
-Q10: night -> noche
-
-✅ Correct!
 
 ------------------------------------------------
 
@@ -267,103 +259,159 @@ Session Complete! Final Score: 9 / 10
 
 ------------------------------------------------
 
-  [PRESS ENTER TO RETURN]
+```
+
+________________________________________________________________________________________________________
+
+💻 Code Snippet
+
+ CSV Data Loading Example
+ 
+```java
+private void loadCsv(String path, List<String[]> target) {
+
+    try (BufferedReader br = new BufferedReader(
+
+            new InputStreamReader(new FileInputStream(path), StandardCharsets.UTF_8))) {
+
+        
+        String line = br.readLine(); // skip header
+
+        while ((line = br.readLine()) != null) {
+
+            String[] cells = line.split(",", -1);
+
+            
+            // Ensure exactly 6 columns
+
+            if (cells.length < 6) {
+
+                String[] padded = new String[6];
+
+                for (int i = 0; i < 6; i++) {
+
+                    padded[i] = i < cells.length ? cells[i].trim() : "";
+
+                }
+                target.add(padded);
+
+            } else {
+
+                for (int i = 0; i < cells.length; i++) {
+
+                    cells[i] = cells[i].trim();
+
+                }
+
+                target.add(cells);
+
+            }
+
+        }
+
+    } catch (Exception e) {
+
+        throw new RuntimeException("Failed to load CSV: " + path, e);
+
+    }
+
+}
+
+```
+
+ Factory Pattern Implementation
+```java
+
+public LevelHandler createLevelHandler(int level, Language language) {
+
+    switch (level) {
+
+        case 1:
+
+            return new LevelOneHandler(languageManager, language);
+
+        case 2:
+
+            return new LevelTwoHandler(languageManager, language);
+
+        case 3:
+
+            return new LevelThreeHandler(languageManager, language);
+
+        default:
+
+            return null;
+
+    }
+
+}
+
+```
+
+_______________________________________________________________________________________________________
+
+👥 Contributors
 
 
-___________________________________________________________________________________________________________________
-
-=== LEVEL 2: Phrase Challenge ===
-
-Translate the common phrases into Filipino.
-
-Note: Precision matters!
 
 
-Phrase: "Good morning"
-
-Your translation: Magandang umaga
-
-✅ Perfect!
+<img width="400" height="400" alt="AvatarMaker" src="https://github.com/user-attachments/assets/8a7f272f-ac0f-45fb-99d8-525164caeb9b" />
 
 
-Phrase: "Thank you"
-
-Your translation: EXIT
-
-Exiting level...
-
-Level 2 Complete. Score: 1/5
+Macatangay, Althea Rhien N.        
 
 
-  [PRESS ENTER TO RETURN]
-  
 
-╔═══════════════════════════════════════╗
+<img width="400" height="400" alt="AvatarMaker (1)" src="https://github.com/user-attachments/assets/b7453eaf-0e40-4f42-bd06-227ad83f80bc" />
 
-║             MAIN MENU                 ║
 
-╠═══════════════════════════════════════╣
 
-║  User: John                           ║
 
-╠═══════════════════════════════════════╣
+Martinez, Maricris M.            
 
-║  [1] Start New Session                ║
 
-║  [2] Exit Application                 ║
 
-╚═══════════════════════════════════════╝
+<img width="400" height="400" alt="AvatarMaker (2)" src="https://github.com/user-attachments/assets/4c66f26f-f172-48f2-bb05-ec6d434f52f0" />
 
- ➤ 2
 
-Thank you for playing. See you next time! John.
-
-___________________________________________________________________________________________________________________
-Author and Acknowledgement
-
-Author: Macatangay, Althea Rhien N.
-
-Martinez, Maricris M.
 
 Marasigan, Kayla Jane D.
 
-Course: CS 211 - Object-Oriented Programming
 
+Course: CS 211 - Object-Oriented Programming  
 Institution: Batangas State University
 
-Acknowledgements
+________________________________________________________________________________________________________
 
-This project extends sincere thanks to Christiana Grace Alib for her guidance on OOP principles. The CSV data structure used in this work was inspired by best practices in language learning. Additionally, the use of ANSI color formatting contributed to enhancing the overall user experience.
+🙏 Acknowledgements
 
-___________________________________________________________________________________________________________________
+This project extends sincere thanks to:
 
-Future Enhancements
-Potential improvements for future versions:
+- Christiana Grace Alib for guidance on OOP principles and design patterns
+- 
+- Open-source language learning communities for inspiration on CSV data structures
+- 
+- ANSI color formatting standards that contributed to enhancing the user experience
+- 
+- Gang of Four Design Patterns for architectural guidance
 
-•	Progress Tracking: Save user scores and track improvement over time
+________________________________________________________________________________________________________
 
-•	Difficulty Scaling: Adaptive difficulty based on user performance
+📚 References
 
-•	More Languages: Expand beyond the current 5 languages
+- [Java Documentation](https://docs.oracle.com/javase/)
+  
+- [Gang of Four Design Patterns](https://en.wikipedia.org/wiki/Design_Patterns)
+  
+- Open-source language learning datasets
 
-•	Audio Support: Pronunciation guidance for words and phrases
 
-•	Timed Challenges: Speed-based exercises for advanced learners
+________________________________________________________________________________________________________
 
-•	User Accounts: Multiple user profiles with individual progress
+📄 License
 
-•	Custom Vocabulary: Allow users to add their own words and phrases
+This project is created for educational purposes as part of CS 211 coursework at Batangas State University.
 
-•	Spaced Repetition: Implement scientifically-backed review schedules
+________________________________________________________________________________________________________
 
-•	Mobile Version: Port to Android/iOS for on-the-go learning
-
-__________________________________________________________________________________________________________________
-
-References
-
-•	Java Documentation: https://docs.oracle.com/javase/
-
-•	OOP Design Patterns: Gang of Four Design Patterns
-
-•	Language Data Sources: Open-source language learning datasets
+Made with ❤️ by Team Language Learners
