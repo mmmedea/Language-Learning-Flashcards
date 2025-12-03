@@ -387,13 +387,8 @@ ________________________________________________________________________________
 
 This project extends sincere thanks to:
 
-- Christiana Grace Alib for guidance on OOP principles and design patterns
-- 
-- Open-source language learning communities for inspiration on CSV data structures
-- 
-- ANSI color formatting standards that contributed to enhancing the user experience
-- 
-- Gang of Four Design Patterns for architectural guidance
+This project extends sincere thanks to Christiana Grace Alib for her guidance on OOP principles and design patterns, to open-source language learning communities for inspiring the use of CSV data structures, to the ANSI color formatting standards that helped 
+enhance the overall user experience, and to the Gang of Four Design Patterns for providing valuable architectural guidance.
 
 ________________________________________________________________________________________________________
 
