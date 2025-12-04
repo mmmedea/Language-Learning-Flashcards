@@ -358,7 +358,8 @@ ________________________________________________________________________________
 <img width="400" height="400" alt="AvatarMaker" src="https://github.com/user-attachments/assets/8a7f272f-ac0f-45fb-99d8-525164caeb9b" />
 
 
-Macatangay, Althea Rhien N.        
+Macatangay, Althea Rhien N.  
+
 
 
 
